@@ -5,7 +5,7 @@ description: >-
   la creación del programa en Java.
 ---
 
-# 📄 Información teórica
+# 📃 Información teórica
 
 > Para implementar un juego de ajedrez en Java y crear una interfaz gráfica para el jugador, hay varios paquetes y herramientas que pueden ser útiles. Aquí te menciono algunas opciones:
 >

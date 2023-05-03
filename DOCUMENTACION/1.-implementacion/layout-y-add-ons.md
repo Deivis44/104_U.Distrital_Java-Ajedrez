@@ -5,7 +5,7 @@ cover: >-
 coverY: 0
 ---
 
-# Layout
+# Layout y add-ons
 
 ## Recursos
 
@@ -18,6 +18,8 @@ Teniendo en cuenta los elementos que nos brinda el paquete de java.Swing, creare
 <figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption><p>Desarrollo del layout</p></figcaption></figure>
 
 A partir de medidas específicas y por medio de aplicaciones para el manejo de imágenes como Photoshop e Illustrator, proponemos una vista previa del juego como tal, organizada por paneles para que se implementen de igual forma en el ejecutable de Java. Con ayuda de los paneles, añadiremos unos dentro de otros, logrando formar el formato deseado. Hay que tener en cuenta, sin embargo, que esto solo es una imagen, y para que el usuario pueda interactuar con los supuestos botones que ve, se generara una capa superior que no tendrá visibilidad con la cual es usuario podrá interactuar siempre que de clic a un supuesto botón.
+
+<figure><img src="../.gitbook/assets/layout-medidas.png" alt=""><figcaption><p>Medidas en píxeles de la ventana predeterminada para la ejecución del juego (1200 x 800)</p></figcaption></figure>
 
 {% tabs %}
 {% tab title="Preview 1" %}
@@ -40,8 +42,6 @@ A partir de medidas específicas y por medio de aplicaciones para el manejo de i
 {% hint style="info" %}
 Los puntos que sobresalen alrededor de las piezas del jugador 1 y jugador 2, hacen de contadores para la cantidad de piezas que cada jugador haya capturado, por ende, si el jugador 1 ha capturado 3 peones, el pequeño círculo que sobresale para en la imagen de los peones negros será el número 3. Cabe recalcar que los contadores varían por pieza y el rey no está incluido.
 {% endhint %}
-
-
 
 ## Cambios
 
