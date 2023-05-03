@@ -2,7 +2,6 @@ package Juego;
 
 // import java.awt.Dimension;
 // import java.awt.Image;
-import java.io.File;
 import javax.swing.*;
 
 public class Prueba extends JFrame{
@@ -29,9 +28,7 @@ public class Prueba extends JFrame{
         JPanel panel = new JPanel();
         this.getContentPane().add(panel);
 
-        File archivo = new File("imagenes/Previews/layout-juego4.png");
-        String rutaCompleta = archivo.getAbsolutePath();
-        ImageIcon fondo = new ImageIcon(rutaCompleta); 
+        ImageIcon fondo = new ImageIcon("imagenes/Previews/layout-juego4.png"); 
         JLabel imagen = new JLabel(fondo);
         panel.add(imagen);
         
