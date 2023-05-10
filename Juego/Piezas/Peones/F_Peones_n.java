@@ -1,4 +1,4 @@
-package Juego.Peones;
+package Juego.Piezas.Peones;
 
 import javax.swing.*;
 import Juego.Tablero;
