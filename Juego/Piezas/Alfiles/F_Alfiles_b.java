@@ -5,26 +5,21 @@ import Juego.Tablero;
 
 public class F_Alfiles_b extends Tablero {
 
-    public F_Alfiles_b () {
-    }
+    public final static void alfiles_b () {
+        int x=260;
+        int y=575;
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 2; j++) {
+            ImageIcon imagenCuadroX = new ImageIcon("imagenes/Piezas/v2/3_alfiles/alfil1_b.png");
+            JButton cuadroX = new JButton(imagenCuadroX);
+            cuadroX.setBounds(x, y, 60, 80);
+            cuadroX.setOpaque(false);
+            cuadroX.setContentAreaFilled(false);
+            // boton1.setBorderPainted(false);
+            x += 240;
+            imagen.add(cuadroX);
 
-    public static JComponent crearAlfil1 () {
-        ImageIcon imagenAlfil1 = new ImageIcon("imagenes/Piezas/v2/3_alfiles/alfil1_b.png");
-        JButton alfil1_b = new JButton(imagenAlfil1);
-        alfil1_b.setBounds(260, 575, 60, 80);
-        alfil1_b.setOpaque(false);
-        alfil1_b.setContentAreaFilled(false);
-        // boton1.setBorderPainted(false);
-        return (JComponent) imagen.add(alfil1_b);
-    }
-
-    public static JComponent crearAlfil2 () {
-        ImageIcon imagenAlfil1 = new ImageIcon("imagenes/Piezas/v2/3_alfiles/alfil1_b.png");
-        JButton alfil2_b = new JButton(imagenAlfil1);
-        alfil2_b.setBounds(500, 575, 60, 80);
-        alfil2_b.setOpaque(false);
-        alfil2_b.setContentAreaFilled(false);
-        // boton1.setBorderPainted(false);
-        return (JComponent) imagen.add(alfil2_b);
-    }
+        }
+            }
+        }
 }

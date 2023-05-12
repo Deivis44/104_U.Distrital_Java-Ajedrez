@@ -13,6 +13,8 @@ public class Tablero extends JFrame{
     
     public JPanel panelPrincipal;
     public static JLabel imagen;
+
+    Cuadros cuadrados;
     
     F_Alfiles_b alfiles_b;
     F_Alfiles_n alfiles_n;
@@ -44,6 +46,7 @@ public class Tablero extends JFrame{
         
         fondo_juego();
         crear_botones_musica();
+        crearCuadros();
 
         generarTorresBlancas();
         generarCaballosBlancos();
@@ -90,15 +93,18 @@ public class Tablero extends JFrame{
         imagen.add(botonSonidos);
     }
 
+    // ? creación del metodo para crear todos los cuadros del tablero
+    public void crearCuadros () {
+      
+    } 
+
     // ! creacion de botones de cada una de las piezas
 
     public void generarAlfilesBlancos () {
-        F_Alfiles_b.crearAlfil1();
-        F_Alfiles_b.crearAlfil2();
+        F_Alfiles_b.alfiles_b();
     }
     public void generarAlfilesNegros () {
-        F_Alfiles_n.crearAlfil1();
-        F_Alfiles_n.crearAlfil2();
+        F_Alfiles_n.alfiles_n();
     }
 
     public void generarCaballosBlancos () {
@@ -111,24 +117,10 @@ public class Tablero extends JFrame{
     }
 
     public void generarPeonesBlancos () {
-        F_Peones_b.crearPeon1();
-        F_Peones_b.crearPeon2();
-        F_Peones_b.crearPeon3();
-        F_Peones_b.crearPeon4();
-        F_Peones_b.crearPeon5();
-        F_Peones_b.crearPeon6();
-        F_Peones_b.crearPeon7();
-        F_Peones_b.crearPeon8();
+        F_Peones_b.peones_b();
     }
     public void generarPeonesNegros () {
-        F_Peones_n.crearPeon1();
-        F_Peones_n.crearPeon2();
-        F_Peones_n.crearPeon3();
-        F_Peones_n.crearPeon4();
-        F_Peones_n.crearPeon5();
-        F_Peones_n.crearPeon6();
-        F_Peones_n.crearPeon7();
-        F_Peones_n.crearPeon8();
+        F_Peones_n.peones_n();
     }
 
     public void generarReinaBlanca () {
