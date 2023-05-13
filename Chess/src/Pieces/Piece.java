@@ -22,7 +22,7 @@ public class Piece {
     BufferedImage sheet;
     {
         try {
-            sheet = ImageIO.read(new FileInputStream("src/Images/pieces.png"));
+            sheet = ImageIO.read(new FileInputStream("Chess/src/Images/pieces.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
