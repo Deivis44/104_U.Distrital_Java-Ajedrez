@@ -191,7 +191,7 @@ public class Board extends JPanel {
         // paint board
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
-                g2d.setColor((c + r) % 2 == 0 ? new Color(227, 198, 171) : new Color(157, 105, 53));
+                g2d.setColor((c + r) % 2 == 0 ? new Color(166, 186, 196) : new Color(77, 34, 51));
                 g2d.fillRect(c * tileSize, r * tileSize, tileSize , tileSize);
             }
         }
