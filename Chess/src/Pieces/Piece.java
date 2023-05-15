@@ -22,7 +22,7 @@ public class Piece {
     BufferedImage sheet;
     {
         try {
-            sheet = ImageIO.read(new FileInputStream("Chess/src/Images/pieces.png"));
+            sheet = ImageIO.read(new FileInputStream("Chess/src/Images/pieces.png")); // carpeta inferior o superio, depende del repo raiz
         } catch (IOException e) {
             e.printStackTrace();
         }
