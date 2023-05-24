@@ -20,8 +20,14 @@ public class King extends Piece{
     }
 
     public boolean isValidMovement(int col, int row) {
-        return Math.abs((col - this.col) * (row - this.row)) == 1 || Math.abs(col - this.col) + Math.abs(row - this.row) == 1 || canCastle(col, row);
+        
+        if ((col < 8 && row < 8) && (col >= 0 && row >= 0)) {
+            return Math.abs((col - this.col) * (row - this.row)) == 1 || Math.abs(col - this.col) + Math.abs(row - this.row) == 1 || canCastle(col, row);
+        } else{
+            return isFistMove; 
+        }
     }
+    
 
     private boolean canCastle(int col, int row) {
 

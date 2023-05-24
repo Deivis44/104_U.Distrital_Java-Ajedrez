@@ -80,7 +80,6 @@ public class Tablero extends JFrame{
         botonMusica.setOpaque(false); 
         botonMusica.setContentAreaFilled(false);
         botonMusica.setBorderPainted(false);
-        
         imagen.add(botonMusica);
         
         ImageIcon imgBotonSonidos = new ImageIcon("imagenes/Addons/sonidos.png");
@@ -89,7 +88,6 @@ public class Tablero extends JFrame{
         botonSonidos.setOpaque(false);
         botonSonidos.setContentAreaFilled(false);
         botonSonidos.setBorderPainted(false);
-    
         imagen.add(botonSonidos);
     }
 

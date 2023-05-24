@@ -6,7 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Input extends MouseAdapter {
-
+    
     Board board;
     public Input(Board board) {
         this.board = board;
@@ -15,18 +15,31 @@ public class Input extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
 
+        int i = 680;
+        int j = 680;
+        
+        if ( i<=680 && i>0 && j<=680 && j>0  ) {
+
         int col = e.getX() / board.tileSize;
         int row = e.getY() / board.tileSize;
 
         Piece pieceXY = board.getPiece(col, row);
+
         if (pieceXY != null) {
             board.selectedPiece = pieceXY;
         }
-
+          } else{
+            System.out.print("A");
+          }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
+
+        int i = 680;
+        int j = 680;
+        
+        if ( i<=680 && i>0 && j<=680 && j>0  ) {
 
         int col = e.getX() / board.tileSize;
         int row = e.getY() / board.tileSize;
@@ -46,6 +59,9 @@ public class Input extends MouseAdapter {
         board.selectedPiece = null;
         board.repaint();
 
+    } else{
+        System.out.print("A");
+      }
     }
 
     @Override

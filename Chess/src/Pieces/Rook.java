@@ -19,7 +19,12 @@ public class Rook extends Piece{
     }
 
     public boolean isValidMovement(int col, int row) {
-        return this.col == col || this.row == row;
+
+        if ((col < 8 && row < 8) && (col >= 0 && row >= 0)) {
+            return this.col == col || this.row == row;
+        } else {
+            return isFistMove; 
+        }
     }
 
     public boolean moveCollidesWithPiece(int col, int row) {

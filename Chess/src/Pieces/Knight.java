@@ -18,6 +18,11 @@ public class Knight extends Piece{
     }
 
     public boolean isValidMovement(int col, int row) {
-        return Math.abs(col - this.col) * Math.abs(row - this.row) == 2;
+
+        if ((col < 8 && row < 8) && (col >= 0 && row >= 0)) {
+            return Math.abs(col - this.col) * Math.abs(row - this.row) == 2;
+        } else {
+            return isFistMove; 
+        }
     }
 }
