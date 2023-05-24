@@ -1,5 +1,5 @@
 ---
-description: '[28/04/23] Interfaz de usuario para cuando empiece la partida'
+description: '[28/04/23] | Interfaz de usuario para cuando empiece la partida'
 cover: >-
   https://images.unsplash.com/photo-1600132806608-231446b2e7af?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTcwMjR8MHwxfHNlYXJjaHwzfHxsYXlvdXR8ZW58MHx8fHwxNjgyNzMyNzY0&ixlib=rb-4.0.3&q=85
 coverY: 0
@@ -11,11 +11,11 @@ coverY: 0
 
 Teniendo en cuenta los elementos que nos brinda el paquete de java.Swing, crearemos el layout correspondiente con los elementos gráficos de los cuales disponemos. Para ello, creamos una interfaz gráfica por default que el usuario encontrara siempre que ejecute el programa.
 
-<figure><img src="../.gitbook/assets/image (9).png" alt="" width="455"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9) (1).png" alt="" width="455"><figcaption></figcaption></figure>
 
 ### Proceso
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption><p>Desarrollo del layout</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption><p>Desarrollo del layout</p></figcaption></figure>
 
 A partir de medidas específicas y por medio de aplicaciones para el manejo de imágenes como Photoshop e Illustrator, proponemos una vista previa del juego como tal, organizada por paneles para que se implementen de igual forma en el ejecutable de Java. Con ayuda de los paneles, añadiremos unos dentro de otros, logrando formar el formato deseado. Hay que tener en cuenta, sin embargo, que esto solo es una imagen, y para que el usuario pueda interactuar con los supuestos botones que ve, se generara una capa superior que no tendrá visibilidad con la cual es usuario podrá interactuar siempre que de clic a un supuesto botón.
 

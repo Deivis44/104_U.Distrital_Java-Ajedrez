@@ -38,15 +38,15 @@ Las fichas, por supuesto, tienen que seguir la temática del pixel art. Buscaré
 
 {% tabs %}
 {% tab title="Ejemplo" %}
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption><p><a href="https://www.reddit.com/r/PixelArt/comments/pmfegd/sets_of_chess_pieces/">https://www.reddit.com/r/PixelArt/comments/pmfegd/sets_of_chess_pieces/</a></p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (9).png" alt=""><figcaption><p><a href="https://www.reddit.com/r/PixelArt/comments/pmfegd/sets_of_chess_pieces/">https://www.reddit.com/r/PixelArt/comments/pmfegd/sets_of_chess_pieces/</a></p></figcaption></figure>
 {% endtab %}
 
 {% tab title="Ejemplo 2" %}
-<figure><img src=".gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
 
 {% tab title="Ejemplo 3" %}
-<figure><img src=".gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
 {% endtabs %}
 
@@ -84,7 +84,7 @@ No siendo tan graficos como lo es el trailer de este juego me parece una idea in
 {% endtab %}
 
 {% tab title="Idea pantalla final" %}
-<figure><img src=".gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
 
 {% tab title="Música" %}

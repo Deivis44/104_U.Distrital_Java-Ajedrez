@@ -15,13 +15,13 @@ Luego de entrar un poco más en contexto con respecto a las herramientas que pue
 {% tab title="Primera opción" %}
 {% embed url="https://nulltale.itch.io/chess" %}
 
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
 
 {% tab title="Segunda opción" %}
 {% embed url="https://bzgamedev.itch.io/pixel-art-chess-set" %}
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endtab %}
 {% endtabs %}
 
@@ -35,7 +35,11 @@ Optamos por la segunda opción, aunque trabajaremos con algunos elementos de la 
 
 ## Tablero
 
+<div align="left">
+
 <figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 ### Adicionales
 
