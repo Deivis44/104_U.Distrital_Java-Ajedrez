@@ -15,11 +15,6 @@ public class Input extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
 
-        int i = 680;
-        int j = 680;
-        
-        if ( i<=680 && i>0 && j<=680 && j>0  ) {
-
         int col = e.getX() / board.tileSize;
         int row = e.getY() / board.tileSize;
 
@@ -28,41 +23,38 @@ public class Input extends MouseAdapter {
         if (pieceXY != null) {
             board.selectedPiece = pieceXY;
         }
-          } else{
-            System.out.print("A");
-          }
+          
     }
 
+
+    boolean turnoBlancas=true; 
+
+
+    
     @Override
     public void mouseReleased(MouseEvent e) {
-
-        int i = 680;
-        int j = 680;
         
-        if ( i<=680 && i>0 && j<=680 && j>0  ) {
-
         int col = e.getX() / board.tileSize;
         int row = e.getY() / board.tileSize;
 
         if (board.selectedPiece != null) {
             Move move = new Move(board, board.selectedPiece, col, row);
-
-            if (board.isValidMove(move)) {
-                System.out.println("hi");
+            
+            if (board.isValidMove(move) && ((turnoBlancas && board.selectedPiece.isWhite) || (!turnoBlancas && !board.selectedPiece.isWhite))) {
                 board.makeMove(move);
+                System.out.println("Movimiento válido");
+                turnoBlancas = !turnoBlancas; 
             } else {
+                System.out.println("Movimiento inválido");
                 board.selectedPiece.xPos = board.selectedPiece.col * board.tileSize;
                 board.selectedPiece.yPos = board.selectedPiece.row * board.tileSize;
             }
         }
-
-        board.selectedPiece = null;
+        
+       board.selectedPiece = null;
         board.repaint();
-
-    } else{
-        System.out.print("A");
-      }
     }
+    
 
     @Override
     public void mouseDragged(MouseEvent e) {
