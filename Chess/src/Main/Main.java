@@ -56,7 +56,7 @@ public class Main {
             frame.setVisible(true);
 
             // ? musica
-            AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/Interfaz/musica/theme2.wav"));
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(Main.class.getResourceAsStream("/musica/theme2.wav"));
             Clip clip = AudioSystem.getClip();
             clip.open(inputStream);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
