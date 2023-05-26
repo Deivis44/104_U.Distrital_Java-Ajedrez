@@ -1,10 +1,11 @@
 package Main;
 
 import javax.swing.*;
-
 import java.awt.*;
+import java.awt.event.*;
 import javax.sound.sampled.*;
 import java.io.IOException;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -12,7 +13,8 @@ import java.util.Random;
 public class MainChess {
 
     private boolean musicPaused = false;
-    private Clip clip;
+    private Clip clip; // musica en general
+    private Clip clipClic; // Sonido de clic
     private FloatControl gainControl;
     private float volume = 0.0f; // Nivel de volumen inicial = 100%
     private List<String> canciones = Arrays.asList("battle1.wav", "battle2.wav", "icy.wav", "theme2.wav");
@@ -41,6 +43,23 @@ public class MainChess {
         JLabel imagen = new JLabel(fondo);
         imagen.setVisible(true);
         frame.add(imagen);
+
+        try {
+            // Obtener el archivo de audio del sonido de clic
+            AudioInputStream clickInputStream = AudioSystem.getAudioInputStream(Input.class.getResourceAsStream("/musica/efectos/click.wav"));
+            // Cargar el clip de audio para el sonido de clic
+            clipClic = AudioSystem.getClip();
+            clipClic.open(clickInputStream);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+
+        imagen.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                reproducirSonidoClic();
+            }
+        });
 
         // añado botones
         ImageIcon imgBotonMusica = new ImageIcon("imagenes/Addons/musica.png");
@@ -168,6 +187,13 @@ public class MainChess {
 
     private void reproducirCancionEnBucle() {
         reproducirCancion(indiceCancionActual);
+    }
+
+    private void reproducirSonidoClic() {
+        if (clipClic != null) {
+            clipClic.setFramePosition(0);
+            clipClic.start();
+        }
     }
 
     private void reproducirCancion(int indice) {
