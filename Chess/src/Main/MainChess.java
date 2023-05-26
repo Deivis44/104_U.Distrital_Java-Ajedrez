@@ -11,12 +11,11 @@ import java.util.Random;
 
 public class MainChess {
 
+    private boolean musicPaused = false;
     private Clip clip;
+    private FloatControl gainControl;
     private float volume = 0.0f; // Nivel de volumen inicial = 100%
     private List<String> canciones = Arrays.asList("battle1.wav", "battle2.wav", "icy.wav", "theme2.wav");
-    private boolean musicPaused = false;
-    private FloatControl gainControl;
-
     private int indiceCancionActual = 0;
     private boolean reproduccionAleatoria = false;
     private boolean reproduccionEnBucle = false;
@@ -91,6 +90,7 @@ public class MainChess {
         imagen.add(board);
 
         frame.setVisible(true);
+
 
         try {
             // Obtener el archivo de audio
