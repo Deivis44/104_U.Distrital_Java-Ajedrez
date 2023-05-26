@@ -25,13 +25,14 @@ public class MainIntro {
 
     public MainIntro() {
         ImageIcon icono = new ImageIcon("imagenes/Recursos/icono3.png");
-        final String title = "| CHESS |  Elije a tu personaje";
+        final String title = "| CHESS |  Intro";
 
         frame = new JFrame();
         frame.setTitle(title);
         frame.setIconImage(icono.getImage());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(1200, 900);
+        frame.getContentPane().setBackground(Color.BLACK);
+        frame.setSize(1200, 940);
         frame.setLayout(new BorderLayout());
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);

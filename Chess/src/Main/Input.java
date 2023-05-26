@@ -28,6 +28,7 @@ public class Input extends MouseAdapter {
 
     boolean turnoBlancas=true; 
     
+    int contador = 1;
     @Override
     public void mouseReleased(MouseEvent e) {
         
@@ -39,10 +40,10 @@ public class Input extends MouseAdapter {
             
             if (board.isValidMove(move) && ((turnoBlancas && board.selectedPiece.isWhite) || (!turnoBlancas && !board.selectedPiece.isWhite))) {
                 board.makeMove(move);
-                System.out.println("Movimiento válido");
+                System.out.println((contador++) + " Movimiento válido");
                 turnoBlancas = !turnoBlancas; 
             } else {
-                System.out.println("Movimiento inválido");
+                System.out.println((contador++) + " Movimiento inválido");
                 board.selectedPiece.xPos = board.selectedPiece.col * board.tileSize;
                 board.selectedPiece.yPos = board.selectedPiece.row * board.tileSize;
             }
