@@ -20,10 +20,12 @@ public class Bishop extends Piece{
 
     public boolean isValidMovement(int col, int row) {
         
-        if ((col < 8 && row < 8) && (col >= 0 && row >=0 )) {
-            return Math.abs(this.col - col) == Math.abs(this.row - row);
-        } else{
-             return isFistMove; 
+        if (col < 0 || col >= 8 || row < 0 || row >= 8) {
+            return false;
+        } else if (Math.abs(this.col - col) == Math.abs(this.row - row)) {
+            return true;
+        } else {
+            return false;
         }
     }
 

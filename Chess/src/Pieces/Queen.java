@@ -20,10 +20,12 @@ public class Queen extends Piece{
 
     public boolean isValidMovement(int col, int row) {
         
-        if ((col < 8 && row < 8) && (col >= 0 && row >= 0)) {
-            return this.col == col || this.row == row || Math.abs(this.col - col) == Math.abs(this.row - row);
+        if (col < 0 || col >= 8 || row < 0 || row >= 8) {
+            return false;
+        } else if (this.col == col || this.row == row || Math.abs(this.col - col) == Math.abs(this.row - row)) {
+            return true;
         } else {
-           return isFistMove; 
+            return false;
         }
     }
 

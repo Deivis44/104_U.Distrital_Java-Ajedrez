@@ -23,13 +23,10 @@ public class Input extends MouseAdapter {
         if (pieceXY != null) {
             board.selectedPiece = pieceXY;
         }
-          
     }
 
 
     boolean turnoBlancas=true; 
-
-
     
     @Override
     public void mouseReleased(MouseEvent e) {
@@ -51,7 +48,7 @@ public class Input extends MouseAdapter {
             }
         }
         
-       board.selectedPiece = null;
+        board.selectedPiece = null;
         board.repaint();
     }
     
