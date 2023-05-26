@@ -33,7 +33,7 @@ public class CheckScanner {
                hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, 1, 1) || // down right
                hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, -1, 1) || // down left
 
-        hitByKnight(move.newCol, move.newRow, king, kingCol, kingRow) ||
+               hitByKnight(move.newCol, move.newRow, king, kingCol, kingRow) ||
                hitByPawn(move.newCol, move.newRow, king, kingCol, kingRow) ||
                hitByKing(king, kingCol, kingRow);
     }

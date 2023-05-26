@@ -47,7 +47,7 @@ public class Input extends MouseAdapter {
     }
 
 
-    boolean turnoBlancas=true; 
+    boolean turnoBlancas = true; 
     
     int contador = 1;
     @Override
