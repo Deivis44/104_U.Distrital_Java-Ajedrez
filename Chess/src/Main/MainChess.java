@@ -46,20 +46,13 @@ public class MainChess {
 
         try {
             // Obtener el archivo de audio del sonido de clic
-            AudioInputStream clickInputStream = AudioSystem.getAudioInputStream(Input.class.getResourceAsStream("/musica/efectos/click.wav"));
+            AudioInputStream clickInputStream = AudioSystem.getAudioInputStream(Input.class.getResourceAsStream("/musica/efectos/mouse.wav"));
             // Cargar el clip de audio para el sonido de clic
             clipClic = AudioSystem.getClip();
             clipClic.open(clickInputStream);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
-
-        imagen.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                reproducirSonidoClic();
-            }
-        });
 
         // añado botones
         ImageIcon imgBotonMusica = new ImageIcon("imagenes/Addons/musica.png");
@@ -70,6 +63,13 @@ public class MainChess {
         botonMusica.setBorderPainted(false);
         imagen.add(botonMusica);
 
+        botonMusica.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                reproducirSonidoClic();
+            }
+        });
+
         ImageIcon imgBotonSonidos = new ImageIcon("imagenes/Addons/sonidos.png");
         JButton botonSonidos = new JButton(imgBotonSonidos);
         botonSonidos.setBounds(1280, 60, 50, 55);
@@ -77,6 +77,13 @@ public class MainChess {
         botonSonidos.setContentAreaFilled(false);
         botonSonidos.setBorderPainted(false);
         imagen.add(botonSonidos);
+
+        // botonSonidos.addMouseListener(new MouseAdapter() {
+        //     @Override
+        //     public void mouseClicked(MouseEvent e) {
+        //         reproducirSonidoClic();
+        //     }
+        // });
 
         ImageIcon imgBotonPausa = new ImageIcon("imagenes/Addons/pausa.png");
         JButton botonPausa = new JButton(imgBotonPausa);
@@ -86,6 +93,13 @@ public class MainChess {
         botonPausa.setBorderPainted(false);
         imagen.add(botonPausa);
 
+        botonPausa.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                reproducirSonidoClic();
+            }
+        });
+
         ImageIcon imgBotonMas = new ImageIcon("imagenes/Addons/mas.png");
         JButton botonMas = new JButton(imgBotonMas);
         botonMas.setBounds(1140, 65, 50, 50);
@@ -94,6 +108,13 @@ public class MainChess {
         botonMas.setBorderPainted(false);
         imagen.add(botonMas);
 
+        botonMas.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                reproducirSonidoClic();
+            }
+        });
+
         ImageIcon imgBotonMenos = new ImageIcon("imagenes/Addons/menos.png");
         JButton botonMenos = new JButton(imgBotonMenos);
         botonMenos.setBounds(1040, 65, 50, 50);
@@ -101,6 +122,13 @@ public class MainChess {
         botonMenos.setContentAreaFilled(false);
         botonMenos.setBorderPainted(false);
         imagen.add(botonMenos);
+
+        botonMenos.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                reproducirSonidoClic();
+            }
+        });
 
 
         // inicializo tablero con todo el codigo del ajedrez
