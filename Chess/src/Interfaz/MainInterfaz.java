@@ -1,23 +1,33 @@
 package Interfaz;
 
 import javax.swing.*;
+
+import Intro.MainIntro;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.sound.sampled.*;
 import java.io.IOException;
 
 public class MainInterfaz {
-    public static void main(String[] args) {
 
+    public void iniciar() {
+
+        // ! musica
+        final Clip[] clip = new Clip[1]; // Declarar un arreglo final de Clip para acceder a él desde el ActionListener
         try {
-            // ? musica
+            // música
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(MainInterfaz.class.getResourceAsStream("/musica/theme1.wav"));
-            Clip clip = AudioSystem.getClip();
-            clip.open(inputStream);
-            clip.loop(Clip.LOOP_CONTINUOUSLY); // Loop
+            clip[0] = AudioSystem.getClip();
+            clip[0].open(inputStream);
+            clip[0].loop(Clip.LOOP_CONTINUOUSLY); // Loop
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
 
+        // ? JFrame
         ImageIcon icono = new ImageIcon("Chess/src/Interfaz/Imagenes/icon.png");
         final String title = "| CHESS |  Elije a tu personaje";
 
@@ -76,5 +86,44 @@ public class MainInterfaz {
         imgrey2.setBorderPainted(false);
         imgrey2.setVisible(true);
         imagen.add(imgrey2);
+
+
+        // botones
+        ImageIcon imgPlay = new ImageIcon("imagenes/Addons/play.png");
+        JButton btnPlay = new JButton(imgPlay);
+        btnPlay.setBounds(36, 563, 150, 90);
+        btnPlay.setOpaque(false); 
+        btnPlay.setContentAreaFilled(false);
+        btnPlay.setBorderPainted(false);
+        btnPlay.setVisible(true);
+        imagen.add(btnPlay);
+
+        btnPlay.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (clip[0] != null && clip[0].isRunning()) {
+                    clip[0].stop(); // Detiene la reproducción del audio
+                }
+
+                frame.dispose(); // Cierra la ventana actual
+
+                // Código para abrir la nueva ventana
+                MainIntro intro = new MainIntro();
+                intro.iniciar();
+            }
+        });
+        
+
+        ImageIcon imgP1 = new ImageIcon("imagenes/Addons/player1.png");
+        JLabel P1 = new JLabel(imgP1);
+        P1.setBounds(196, 608, 105, 45);
+        P1.setVisible(true);
+        imagen.add(P1);
+
+        ImageIcon imgP2 = new ImageIcon("imagenes/Addons/player2.png");
+        JLabel P2 = new JLabel(imgP2);
+        P2.setBounds(309, 608, 105, 45);
+        P2.setVisible(true);
+        imagen.add(P2);
     }
 }

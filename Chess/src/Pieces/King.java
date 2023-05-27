@@ -1,9 +1,9 @@
 package Pieces;
 
+import java.awt.image.BufferedImage;
+
 import Main.Board;
 import Main.Move;
-
-import java.awt.image.BufferedImage;
 
 public class King extends Piece{
     public King(Board board, int col, int row, boolean isWhite) {

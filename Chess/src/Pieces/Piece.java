@@ -1,9 +1,10 @@
 package Pieces;
 
-import Main.Board;
-
 import java.awt.*;
 import javax.imageio.ImageIO;
+
+import Main.Board;
+
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;

@@ -1,8 +1,9 @@
 package Intro;
 
+import javax.swing.*;
+
 import Main.MainChess;
 
-import javax.swing.*;
 import java.awt.*;
 import javax.sound.sampled.*;
 import java.io.IOException;
@@ -92,10 +93,9 @@ public class MainIntro {
     }
 
 
-    public static void main(String[] args) {
+    public void iniciar() {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new MainIntro();
             }
         });
     }

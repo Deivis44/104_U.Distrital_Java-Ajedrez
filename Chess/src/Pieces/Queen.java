@@ -1,8 +1,8 @@
 package Pieces;
 
-import Main.Board;
-
 import java.awt.image.BufferedImage;
+
+import Main.Board;
 
 public class Queen extends Piece{
     public Queen(Board board, int col, int row, boolean isWhite) {
