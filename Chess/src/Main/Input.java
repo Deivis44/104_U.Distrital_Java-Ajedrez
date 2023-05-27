@@ -65,17 +65,17 @@ public class Input extends MouseAdapter {
                     String decenas = "[" + (contador++) + " ]";
 
                     if (contador % 2 == 0) {
-                        System.out.println(decenas + " Movimiento negras: válido           |");
-                    } else {
                         System.out.println(decenas + " Movimiento blancas: válido          |");
+                    } else {
+                        System.out.println(decenas + " Movimiento negras: válido           |");
                     }
                 } else if (contador >= 10 && contador < 100) {
                     String centenas = "[" + (contador++) + "]";
 
                     if (contador % 2 == 0) {
-                        System.out.println(centenas + " Movimiento negras: válido           |");
-                    } else {
                         System.out.println(centenas + " Movimiento blancas: válido          |");
+                    } else {
+                        System.out.println(centenas + " Movimiento negras: válido           |");
                     }
                 }
 
