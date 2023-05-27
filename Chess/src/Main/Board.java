@@ -211,4 +211,8 @@ public class Board extends JPanel {
             piece.paint(g2d);
         }
     }
+
+    public boolean isValidMove(int kingCol, int kingRow, int col, int row) {
+        return false;
+    }
 }

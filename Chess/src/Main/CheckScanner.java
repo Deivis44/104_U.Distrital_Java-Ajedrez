@@ -23,19 +23,28 @@ public class CheckScanner {
             kingRow = move.newRow;
         }
 
-        return hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 0, 1) || // up
-               hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 1, 0) || // right
-               hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 0, -1) || // down
-               hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, -1, 0) || // left
+        boolean isKingChecked = hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 0, 1) ||
+                hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 1, 0) ||
+                hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 0, -1) ||
+                hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, -1, 0) ||
 
-               hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, -1, -1) || // up left
-               hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, 1, -1) || // up right
-               hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, 1, 1) || // down right
-               hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, -1, 1) || // down left
+                hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, -1, -1) ||
+                hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, 1, -1) ||
+                hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, 1, 1) ||
+                hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, -1, 1) ||
 
-               hitByKnight(move.newCol, move.newRow, king, kingCol, kingRow) ||
-               hitByPawn(move.newCol, move.newRow, king, kingCol, kingRow) ||
-               hitByKing(king, kingCol, kingRow);
+                hitByKnight(move.newCol, move.newRow, king, kingCol, kingRow) ||
+                hitByPawn(move.newCol, move.newRow, king, kingCol, kingRow) ||
+                hitByKing(king, kingCol, kingRow);
+
+        boolean isKingInCheckmate = isKingChecked && isKingInCheckmate(king, kingCol, kingRow);
+
+        if (isKingInCheckmate == true) {
+            System.out.println("Es jaque mate");
+            return true;
+        }
+
+        return isKingChecked;
     }
 
     private boolean hitByRook(int col, int row, Piece king, int kingCol, int kingRow, int colVal, int rowVal) {
@@ -113,5 +122,16 @@ public class CheckScanner {
 
     private boolean checkPawn(Piece p, Piece k, int col, int row) {
         return p != null && !board.sameTeam(p, k) && p.name.equals("Pawn") && !(p.col == col && p.row == row);
+    }
+
+    private boolean isKingInCheckmate(Piece king, int kingCol, int kingRow) {
+        for (int col = kingCol - 1; col <= kingCol + 1; col++) {
+            for (int row = kingRow - 1; row <= kingRow + 1; row++) {
+                if (board.isValidMove(kingCol, kingRow, col, row) && !isKingChecked(new Move(board, king, col, row))) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

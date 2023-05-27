@@ -22,13 +22,13 @@ public class MainChess {
     private boolean reproduccionAleatoria = false;
     private boolean reproduccionEnBucle = false;
 
+    JFrame frame = new JFrame();
     public void iniciar() {
 
         final String copyRight = "Universidad Distrital - Ajedrez | © 2023";
 
         ImageIcon icono = new ImageIcon("imagenes/Recursos/icono.png");
 
-        JFrame frame = new JFrame();
         frame.setIconImage(icono.getImage());
         frame.setTitle(copyRight);
         frame.getContentPane().setBackground(Color.BLACK);
