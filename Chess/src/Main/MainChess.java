@@ -25,6 +25,9 @@ public class MainChess {
     static JFrame frame = new JFrame();
     public void iniciar() {
 
+        // titulo por consola
+        System.out.println("\nCHESS JAVA - UD ------------------------ |\n                                         |");
+
         final String copyRight = "Universidad Distrital - Ajedrez | © 2023";
 
         ImageIcon icono = new ImageIcon("imagenes/Recursos/icono.png");

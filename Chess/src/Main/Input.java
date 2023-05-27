@@ -48,8 +48,8 @@ public class Input extends MouseAdapter {
 
 
     boolean turnoBlancas = true; 
-    
-    int contador = 1;
+    static int contador = 1;
+        
     @Override
     public void mouseReleased(MouseEvent e) {
         int col = e.getX() / board.tileSize;
@@ -57,10 +57,28 @@ public class Input extends MouseAdapter {
 
         if (board.selectedPiece != null) {
             Move move = new Move(board, board.selectedPiece, col, row);
-
+            
             if (board.isValidMove(move) && ((turnoBlancas && board.selectedPiece.isWhite) || (!turnoBlancas && !board.selectedPiece.isWhite))) {
                 board.makeMove(move);
-                System.out.println((contador++) + " Movimiento válido                     |");
+
+                if (contador < 10 && contador >= 0) {
+                    String decenas = "[" + (contador++) + " ]";
+
+                    if (contador % 2 == 0) {
+                        System.out.println(decenas + " Movimiento negras: válido           |");
+                    } else {
+                        System.out.println(decenas + " Movimiento blancas: válido          |");
+                    }
+                } else if (contador >= 10 && contador < 100) {
+                    String centenas = "[" + (contador++) + "]";
+
+                    if (contador % 2 == 0) {
+                        System.out.println(centenas + " Movimiento negras: válido           |");
+                    } else {
+                        System.out.println(centenas + " Movimiento blancas: válido          |");
+                    }
+                }
+
                 turnoBlancas = !turnoBlancas;
                 reproducirSonido(clickSound);
             } else {
