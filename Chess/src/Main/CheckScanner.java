@@ -40,7 +40,8 @@ public class CheckScanner {
         boolean isKingInCheckmate = isKingChecked && isKingInCheckmate(king, kingCol, kingRow);
 
         if (isKingInCheckmate == true) {
-            System.out.println("Es jaque mate");
+            System.out.println("\n             | JAQUE MATE. |                \n------------- FIN DEL JUEGO -------------");
+            MainChess.frame.dispose();
             return true;
         }
 

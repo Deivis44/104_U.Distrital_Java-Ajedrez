@@ -22,7 +22,7 @@ public class MainChess {
     private boolean reproduccionAleatoria = false;
     private boolean reproduccionEnBucle = false;
 
-    JFrame frame = new JFrame();
+    static JFrame frame = new JFrame();
     public void iniciar() {
 
         final String copyRight = "Universidad Distrital - Ajedrez | © 2023";
