@@ -11,42 +11,42 @@ public class CheckScanner {
     }
 
     public boolean isKingChecked(Move move) {
-
         Piece king = board.findKing(move.piece.isWhite);
         assert king != null;
-
+    
         int kingCol = king.col;
         int kingRow = king.row;
-
+    
         if (board.selectedPiece != null && board.selectedPiece.name.equals("King")) {
             kingCol = move.newCol;
             kingRow = move.newRow;
         }
-
+    
         boolean isKingChecked = hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 0, 1) ||
                 hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 1, 0) ||
                 hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 0, -1) ||
                 hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, -1, 0) ||
-
+    
                 hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, -1, -1) ||
                 hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, 1, -1) ||
                 hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, 1, 1) ||
                 hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, -1, 1) ||
-
+    
                 hitByKnight(move.newCol, move.newRow, king, kingCol, kingRow) ||
                 hitByPawn(move.newCol, move.newRow, king, kingCol, kingRow) ||
                 hitByKing(king, kingCol, kingRow);
-
+    
         boolean isKingInCheckmate = isKingChecked && isKingInCheckmate(king, kingCol, kingRow);
-
-        if (isKingInCheckmate == true) {
+    
+        if (isKingInCheckmate) {
             System.out.println("                                         |\n             | JAQUE MATE. |             |\n_____________ FIN DEL JUEGO _____________|\n");
-            MainChess.frame.dispose();
+            MainChess.frame.dispose(); // Cierra la ventana de la interfaz gráfica
             return true;
         }
-
+    
         return isKingChecked;
     }
+    
 
     private boolean hitByRook(int col, int row, Piece king, int kingCol, int kingRow, int colVal, int rowVal) {
 
@@ -126,13 +126,46 @@ public class CheckScanner {
     }
 
     private boolean isKingInCheckmate(Piece king, int kingCol, int kingRow) {
-        for (int col = kingCol - 1; col <= kingCol + 1; col++) {
-            for (int row = kingRow - 1; row <= kingRow + 1; row++) {
-                if (board.isValidMove(kingCol, kingRow, col, row) && !isKingChecked(new Move(board, king, col, row))) {
-                    return false;
+        boolean allPositionsChecked = true;
+    
+        int[] offsets = {-1, 0, 1}; // Desplazamientos para movimientos en todas las direcciones
+    
+        for (int colOffset : offsets) {
+            for (int rowOffset : offsets) {
+                if (colOffset == 0 && rowOffset == 0) {
+                    continue; // Saltar la posición actual del rey
                 }
+    
+                int targetCol = kingCol + colOffset;
+                int targetRow = kingRow + rowOffset;
+    
+                if (board.isValidMove(kingCol, kingRow, targetCol, targetRow)) {
+                    continue; // Saltar si el movimiento no es válido
+                }
+    
+                if (!isKingChecked(new Move(board, king, targetCol, targetRow))) {
+                    allPositionsChecked = false;
+                    break; // El rey no está en jaque en esta posición, salir del bucle interno
+                }
+    
+                if (isKingChecked(new Move(board, king, targetCol, targetRow))) {
+                    allPositionsChecked = true;
+                    break; // El rey está en jaque en esta posición, salir del bucle interno
+                }
+
+            }
+    
+            if (!allPositionsChecked) {
+                break; // Salir del bucle externo si alguna posición no ha sido verificada
             }
         }
-        return true;
+    
+        if (allPositionsChecked) {
+            MainChess.frame.dispose(); // Cerrar la ventana solo si todas las posiciones han sido verificadas
+            return true; // Todas las posiciones adyacentes al rey están en jaque, es jaque mate
+        } else {
+            return false; // Al menos una posición no está en jaque, no es jaque mate
+        }
     }
+    
 }
