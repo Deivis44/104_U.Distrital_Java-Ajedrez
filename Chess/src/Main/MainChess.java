@@ -22,7 +22,7 @@ public class MainChess {
     private boolean reproduccionAleatoria = false;
     private boolean reproduccionEnBucle = false;
 
-    static JFrame frame = new JFrame();
+    public static JFrame frame = new JFrame();
     public void iniciar() {
 
         // titulo por consola
