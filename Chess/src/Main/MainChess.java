@@ -1,6 +1,9 @@
 package Main;
 
 import javax.swing.*;
+
+import Interfaz.MainInterfaz;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.sound.sampled.*;
@@ -134,7 +137,20 @@ public class MainChess {
         });
 
 
-        // inicializo tablero con todo el codigo del ajedrez
+        JLabel player1 = new TransparentLabel(MainInterfaz.contenidoTextArea1);
+        player1.setFont(new Font("Impact", Font.PLAIN, 24));
+        player1.setHorizontalAlignment(SwingConstants.CENTER);
+        player1.setBounds(940, 582, 90, 40);
+        imagen.add(player1);
+
+        JLabel player2 = new TransparentLabel(MainInterfaz.contenidoTextArea2);
+        player2.setFont(new Font("Impact", Font.PLAIN, 24));
+        player2.setHorizontalAlignment(SwingConstants.CENTER);
+        player2.setBounds(1154, 582, 90, 40);
+        imagen.add(player2);
+
+
+        // ! inicializo tablero con todo el codigo del ajedrez
         Board board = new Board();
         board.setBounds(126, 85, 680, 680);
         imagen.add(board);
@@ -243,5 +259,24 @@ public class MainChess {
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
-    }     
+    }
+
+    private static class TransparentLabel extends JLabel {
+
+        public TransparentLabel(String text) {
+            super(text);
+            setOpaque(false); // Hacer el JLabel transparente
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            // Hacer que el fondo del JLabel sea transparente
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.setColor(new Color(0, 0, 0, 0)); // Color transparente
+            g2d.fillRect(0, 0, getWidth(), getHeight());
+            g2d.dispose();
+
+            super.paintComponent(g);
+        }
+    }
 }

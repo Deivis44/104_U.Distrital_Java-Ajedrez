@@ -7,11 +7,22 @@ import Intro.MainIntro;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.*;
+
+import java.io.File;
 import java.io.IOException;
 
 public class MainInterfaz {
+
+    public JTextArea textArea1;
+    public JTextArea textArea2;
+    public static String contenidoTextArea1;
+    public static String contenidoTextArea2;
+
+    public JTextArea textArea;
 
     public void iniciar() {
 
@@ -48,6 +59,7 @@ public class MainInterfaz {
         frame.add(imagen);
 
         frame.setVisible(true);
+
 
         // titulo
         ImageIcon titulo = new ImageIcon("Chess/src/Interfaz/Addons/title.gif");
@@ -107,6 +119,10 @@ public class MainInterfaz {
 
                 frame.dispose(); // Cierra la ventana actual
 
+                // Obtener el contenido de los JTextAreas
+                contenidoTextArea1 = textArea1.getText();
+                contenidoTextArea2 = textArea2.getText();
+
                 // Código para abrir la nueva ventana
                 MainIntro intro = new MainIntro();
                 intro.iniciar();
@@ -114,16 +130,51 @@ public class MainInterfaz {
         });
         
 
-        ImageIcon imgP1 = new ImageIcon("imagenes/Addons/player1.png");
-        JLabel P1 = new JLabel(imgP1);
-        P1.setBounds(196, 608, 105, 45);
-        P1.setVisible(true);
-        imagen.add(P1);
+        // ImageIcon imgP1 = new ImageIcon("imagenes/Addons/player1.png");
+        // JLabel P1 = new JLabel(imgP1);
+        // P1.setBounds(196, 608, 105, 45);
+        // P1.setVisible(true);
+        // imagen.add(P1);
 
-        ImageIcon imgP2 = new ImageIcon("imagenes/Addons/player2.png");
-        JLabel P2 = new JLabel(imgP2);
-        P2.setBounds(309, 608, 105, 45);
-        P2.setVisible(true);
-        imagen.add(P2);
+        // ImageIcon imgP2 = new ImageIcon("imagenes/Addons/player2.png");
+        // JLabel P2 = new JLabel(imgP2);
+        // P2.setBounds(309, 608, 105, 45);
+        // P2.setVisible(true);
+        // imagen.add(P2);
+
+        // Text Area personalizado con imagen de fondo
+        textArea1 = new CustomTextArea("imagenes/Addons/player1.png");
+        textArea1.setBounds(196, 608, 105, 45);
+        imagen.add(textArea1);
+
+        textArea2 = new CustomTextArea("imagenes/Addons/player2.png");
+        textArea2.setBounds(309, 608, 105, 45);
+        imagen.add(textArea2);
+    }
+
+    private static class CustomTextArea extends JTextArea {
+
+        private BufferedImage backgroundImage;
+
+        public CustomTextArea(String imageFilePath) {
+            // Cargar la imagen de fondo
+            try {
+                backgroundImage = ImageIO.read(new File(imageFilePath));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            setOpaque(false); // Hacer que el JTextArea sea transparente
+            setFont(new Font("Courier New", Font.PLAIN, 30)); // Establecer la fuente del texto
+            
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            // Dibujar la imagen de fondo
+            if (backgroundImage != null) {
+                g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+            }
+            super.paintComponent(g);
+        }
     }
 }
