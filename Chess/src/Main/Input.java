@@ -13,8 +13,8 @@ public class Input extends MouseAdapter {
     
     private Board board;
     private boolean turnoBlancas = true;
-    private int contador = 1;
-    private StringBuilder logBuilder = new StringBuilder();
+    public static int contador = 1;
+    public static StringBuilder logBuilder = new StringBuilder();
     Clip clickSound; // Clip para el sonido de clic;
     Clip errorSound; // Clip para el sonido de error
 
@@ -53,8 +53,9 @@ public class Input extends MouseAdapter {
 
 
         
+    public static String movimiento;
     @Override
-public void mouseReleased(MouseEvent e) {
+    public void mouseReleased(MouseEvent e) {
     int col = e.getX() / board.tileSize;
     int row = e.getY() / board.tileSize;
 
@@ -64,7 +65,6 @@ public void mouseReleased(MouseEvent e) {
         if (board.isValidMove(move) && ((turnoBlancas && board.selectedPiece.isWhite) || (!turnoBlancas && !board.selectedPiece.isWhite))) {
             board.makeMove(move);
 
-            String movimiento;
             if (contador < 10) {
                 movimiento = String.format("[%d ] Movimiento ", contador);
             } else {
@@ -72,9 +72,9 @@ public void mouseReleased(MouseEvent e) {
             }
 
             if (contador % 2 == 0) {
-                movimiento += "blancas: válido          |";
-            } else {
                 movimiento += "negras: válido           |";
+            } else {
+                movimiento += "blancas: válido          |";
             }
 
             System.out.println(movimiento);
@@ -83,6 +83,8 @@ public void mouseReleased(MouseEvent e) {
 
             turnoBlancas = !turnoBlancas;
             reproducirSonido(clickSound);
+            guardarLogEnArchivo("Chess_moves.txt"); // Guardar el registro en un archivo de texto
+
         } else {
             board.selectedPiece.xPos = board.selectedPiece.col * board.tileSize;
             board.selectedPiece.yPos = board.selectedPiece.row * board.tileSize;
@@ -92,8 +94,6 @@ public void mouseReleased(MouseEvent e) {
 
     board.selectedPiece = null;
     board.repaint();
-
-    guardarLogEnArchivo("Chess_moves.txt"); // Guardar el registro en un archivo de texto
 }
     
     private void reproducirSonido(Clip clip) {
@@ -116,7 +116,7 @@ public void mouseReleased(MouseEvent e) {
         }
     }
 
-    private void guardarLogEnArchivo(String fileName) {
+    public static void guardarLogEnArchivo(String fileName) {
         String currentDir = System.getProperty("user.dir");
         String filePath = currentDir + "/" + fileName;
     

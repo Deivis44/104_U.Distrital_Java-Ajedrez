@@ -32,8 +32,6 @@ public class MainChess {
     public void iniciar() {
 
         // titulo por consola
-        System.out.println("\nCHESS JAVA - UD ------------------------ |\n                                         |");
-
         final String copyRight = "Universidad Distrital - Ajedrez | © 2023";
 
         ImageIcon icono = new ImageIcon("imagenes/Recursos/icono.png");
@@ -89,8 +87,20 @@ public class MainChess {
         botonClose.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose(); // Cierra la ventana actual
+        
+                String jaqueMate;
+        
+                if (Input.contador % 2 == 0) {
+                    jaqueMate = "\n                                         |\n        ¡Jaque mate de blancas!          |\n";
+                } else {
+                    jaqueMate = "\n                                         |\n        ¡Jaque mate de negras!           |\n";
+                }
+        
+                Input.logBuilder.append(jaqueMate).append(System.lineSeparator());
+                Input.guardarLogEnArchivo("Chess_moves.txt");
             }
         });
+        
 
         ImageIcon imgBotonInfo = new ImageIcon("imagenes/Addons/info.png");
         JButton botonInfo = new JButton(imgBotonInfo);
