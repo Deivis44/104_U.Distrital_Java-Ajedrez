@@ -21,6 +21,12 @@ public class CheckScanner {
             kingCol = move.newCol;
             kingRow = move.newRow;
         }
+
+        // if (board.selectedPiece != null && board.selectedPiece.name.equals("King") && !isKingChecked(move)) {
+        //         System.out.println("hola");
+        // }
+
+        
     
         boolean isKingChecked = hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 0, 1) ||
                 hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 1, 0) ||
@@ -33,8 +39,43 @@ public class CheckScanner {
                 hitByKnight(move.newCol, move.newRow, king, kingCol, kingRow) ||
                 hitByPawn(move.newCol, move.newRow, king, kingCol, kingRow) ||
                 hitByKing(king, kingCol, kingRow);
+
+                if (!isKingChecked && board.selectedPiece.name.equals("King") && isCheckmate(move)) {
+                    System.out.println("hola");
+                }
     
         return isKingChecked;
+    }
+
+    public boolean isCheckmate(Move move) {
+        Piece king = board.findKing(move.piece.isWhite);
+        assert king != null;
+    
+        // Verificar si el rey está en jaque
+        boolean isKingChecked = isKingChecked(move);
+    
+        if (!isKingChecked) {
+            System.out.println("hola");
+            return false;
+        }
+    
+        // Verificar si el rey puede moverse a alguna casilla adyacente sin estar en jaque
+        for (int col = king.col - 1; col <= king.col + 1; col++) {
+            for (int row = king.row - 1; row <= king.row + 1; row++) {
+                if (col == king.col && row == king.row) {
+                    continue;
+                }
+    
+                Move testMove = new Move(king.col, king.row, col, row, king);
+                if (!isKingChecked(testMove)) {
+                    return false;
+                }
+            }
+        }
+    
+        // Si el rey está en jaque y no puede moverse a ninguna casilla adyacente sin estar en jaque, entonces es jaque mate
+        System.out.println("Mate");
+        return true;
     }
     
 

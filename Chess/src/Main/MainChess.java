@@ -1,8 +1,10 @@
 package Main;
 
+
 import javax.swing.*;
 
 import Interfaz.MainInterfaz;
+// import Intro.MainIntro;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -156,6 +158,23 @@ public class MainChess {
         imagen.add(board);
 
         frame.setVisible(true);
+
+        // botonSonidos.addActionListener(new ActionListener() {
+        //     @Override
+        //     public void actionPerformed(ActionEvent e) {
+        //         reiniciarBoard(); // Llama al método para reiniciar el objeto Board
+        //     }
+
+        //     public void reiniciarBoard() {
+        //         imagen.removeAll();
+        //         reproducirSonidoClic();
+
+        //         frame.dispose();
+
+        //         MainIntro intro = new MainIntro();
+        //         intro.iniciar();
+        //     }
+        // });
 
 
         try {

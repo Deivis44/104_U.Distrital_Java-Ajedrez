@@ -21,4 +21,7 @@ public class Move {
         this.piece = piece;
         this.capture = board.getPiece(newCol, newRow);
     }
+
+    public Move(int col, int row, int col2, int row2, Piece king) {
+    }
 }
