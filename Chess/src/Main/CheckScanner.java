@@ -40,10 +40,24 @@ public class CheckScanner {
                 hitByPawn(move.newCol, move.newRow, king, kingCol, kingRow) ||
                 hitByKing(king, kingCol, kingRow);
 
-                if (!isKingChecked && board.selectedPiece.name.equals("King") && isCheckmate(move)) {
-                    System.out.println("hola");
-                }
-    
+            boolean isKingInMate = hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 0, 1) ||
+                hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 1, 0) ||
+                hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, 0, -1) ||
+                hitByRook(move.newCol, move.newRow, king, kingCol, kingRow, -1, 0) ||
+                hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, 1, -1) ||
+                hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, 1, -1) ||
+                hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, 1, 1) ||
+                hitByBishop(move.newCol, move.newRow, king, kingCol, kingRow, -1, 1) ||
+                hitByKnight(move.newCol, move.newRow, king, kingCol, kingRow) ||
+                hitByPawn(move.newCol, move.newRow, king, kingCol, kingRow) ||
+                hitByKing(king, kingCol, kingRow);
+
+        if (board.selectedPiece.name.equals("King")) {
+            if (king.isValidMovement(kingCol, kingRow) == false) {
+                System.out.println("hola");
+            }
+        }        
+
         return isKingChecked;
     }
 
