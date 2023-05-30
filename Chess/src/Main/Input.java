@@ -6,10 +6,15 @@ import javax.sound.sampled.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class Input extends MouseAdapter {
     
-    Board board;
+    private Board board;
+    private boolean turnoBlancas = true;
+    private int contador = 1;
+    private StringBuilder logBuilder = new StringBuilder();
     Clip clickSound; // Clip para el sonido de clic;
     Clip errorSound; // Clip para el sonido de error
 
@@ -47,51 +52,50 @@ public class Input extends MouseAdapter {
     }
 
 
-    boolean turnoBlancas = true; 
-    static int contador = 1;
         
     @Override
-    public void mouseReleased(MouseEvent e) {
-        int col = e.getX() / board.tileSize;
-        int row = e.getY() / board.tileSize;
+public void mouseReleased(MouseEvent e) {
+    int col = e.getX() / board.tileSize;
+    int row = e.getY() / board.tileSize;
 
-        if (board.selectedPiece != null) {
-            Move move = new Move(board, board.selectedPiece, col, row);
-            
-            if (board.isValidMove(move) && ((turnoBlancas && board.selectedPiece.isWhite) || (!turnoBlancas && !board.selectedPiece.isWhite))) {
-                board.makeMove(move);
+    if (board.selectedPiece != null) {
+        Move move = new Move(board, board.selectedPiece, col, row);
 
-                if (contador < 10 && contador >= 0) {
-                    String decenas = "[" + (contador++) + " ]";
+        if (board.isValidMove(move) && ((turnoBlancas && board.selectedPiece.isWhite) || (!turnoBlancas && !board.selectedPiece.isWhite))) {
+            board.makeMove(move);
 
-                    if (contador % 2 == 0) {
-                        System.out.println(decenas + " Movimiento blancas: válido          |");
-                    } else {
-                        System.out.println(decenas + " Movimiento negras: válido           |");
-                    }
-                } else if (contador >= 10 && contador < 100) {
-                    String centenas = "[" + (contador++) + "]";
-
-                    if (contador % 2 == 0) {
-                        System.out.println(centenas + " Movimiento blancas: válido          |");
-                    } else {
-                        System.out.println(centenas + " Movimiento negras: válido           |");
-                    }
-                }
-
-                turnoBlancas = !turnoBlancas;
-                reproducirSonido(clickSound);
+            String movimiento;
+            if (contador < 10) {
+                movimiento = String.format("[%d ] Movimiento ", contador);
             } else {
-                board.selectedPiece.xPos = board.selectedPiece.col * board.tileSize;
-                board.selectedPiece.yPos = board.selectedPiece.row * board.tileSize;
-                reproducirSonido(errorSound);
+                movimiento = String.format("[%d] Movimiento ", contador);
             }
-        }
 
-        board.selectedPiece = null;
-        board.repaint();
+            if (contador % 2 == 0) {
+                movimiento += "blancas: válido          |";
+            } else {
+                movimiento += "negras: válido           |";
+            }
+
+            System.out.println(movimiento);
+            logBuilder.append(movimiento).append(System.lineSeparator());
+            contador++;
+
+            turnoBlancas = !turnoBlancas;
+            reproducirSonido(clickSound);
+        } else {
+            board.selectedPiece.xPos = board.selectedPiece.col * board.tileSize;
+            board.selectedPiece.yPos = board.selectedPiece.row * board.tileSize;
+            reproducirSonido(errorSound);
+        }
     }
 
+    board.selectedPiece = null;
+    board.repaint();
+
+    guardarLogEnArchivo("Chess_moves.txt"); // Guardar el registro en un archivo de texto
+}
+    
     private void reproducirSonido(Clip clip) {
         if (clip != null) {
             clip.stop(); // Detener el sonido si se está reproduciendo
@@ -109,6 +113,20 @@ public class Input extends MouseAdapter {
             board.selectedPiece.yPos = e.getY() - board.tileSize / 2;
 
             board.repaint();
+        }
+    }
+
+    private void guardarLogEnArchivo(String fileName) {
+        String currentDir = System.getProperty("user.dir");
+        String filePath = currentDir + "/" + fileName;
+    
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            writer.write("\nCHESS JAVA - UD ------------------------ |\n                                         |\n"); // Línea de título
+    
+            writer.write(logBuilder.toString()); // Líneas de movimiento
+            System.out.println("\n_archivo .txt modificado_\n");
+        } catch (IOException e) {
+            System.out.println("\n_error en la modificación del .txt_: \n" + e.getMessage());
         }
     }
 }
