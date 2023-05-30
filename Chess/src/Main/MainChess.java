@@ -1,12 +1,9 @@
 package Main;
 
-
-import javax.swing.*;
-
 import Interfaz.MainInterfaz;
-// import Intro.MainIntro;
 
 import java.awt.*;
+import javax.swing.*;
 import java.awt.event.*;
 import javax.sound.sampled.*;
 import java.io.IOException;
@@ -14,6 +11,10 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
+import java.awt.Desktop;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class MainChess {
 
@@ -62,10 +63,10 @@ public class MainChess {
             e.printStackTrace();
         }
 
-        // añado botones
+        // ? seccion botones control
         ImageIcon imgBotonMusica = new ImageIcon("imagenes/Addons/musica.png");
         JButton botonMusica = new JButton(imgBotonMusica);
-        botonMusica.setBounds(1225, 60, 50, 55);
+        botonMusica.setBounds(1220, 60, 50, 55);
         botonMusica.setOpaque(false); 
         botonMusica.setContentAreaFilled(false);
         botonMusica.setBorderPainted(false);
@@ -78,21 +79,39 @@ public class MainChess {
             }
         });
 
-        ImageIcon imgBotonSonidos = new ImageIcon("imagenes/Addons/sonidos.png");
-        JButton botonSonidos = new JButton(imgBotonSonidos);
-        botonSonidos.setBounds(1280, 60, 50, 55);
-        botonSonidos.setOpaque(false);
-        botonSonidos.setContentAreaFilled(false);
-        botonSonidos.setBorderPainted(false);
-        imagen.add(botonSonidos);
+        ImageIcon imgBotonClose = new ImageIcon("imagenes/Addons/close.png");
+        JButton botonClose = new JButton(imgBotonClose);
+        botonClose.setBounds(1279, 60, 50, 55);
+        botonClose.setOpaque(false);
+        botonClose.setContentAreaFilled(false);
+        botonClose.setBorderPainted(false);
+        imagen.add(botonClose);
+        botonClose.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose(); // Cierra la ventana actual
+            }
+        });
 
-        // botonSonidos.addMouseListener(new MouseAdapter() {
-        //     @Override
-        //     public void mouseClicked(MouseEvent e) {
-        //         reproducirSonidoClic();
-        //     }
-        // });
+        ImageIcon imgBotonInfo = new ImageIcon("imagenes/Addons/info.png");
+        JButton botonInfo = new JButton(imgBotonInfo);
+        botonInfo.setBounds(1215, 130, 120, 40);
+        botonInfo.setOpaque(false);
+        botonInfo.setContentAreaFilled(false);
+        botonInfo.setBorderPainted(false);
+        imagen.add(botonInfo);
+        botonInfo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String videoURL = "https://www.youtube.com/watch?v=AH4Vx5zz7Go";
+                    Desktop.getDesktop().browse(new URI(videoURL));
+                } catch (IOException | URISyntaxException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
 
+
+        // ? seccion música
         ImageIcon imgBotonPausa = new ImageIcon("imagenes/Addons/pausa.png");
         JButton botonPausa = new JButton(imgBotonPausa);
         botonPausa.setBounds(1090, 65, 50, 50);
@@ -139,6 +158,7 @@ public class MainChess {
         });
 
 
+        // ? texareas
         JLabel player1 = new TransparentLabel(MainInterfaz.contenidoTextArea1);
         player1.setFont(new Font("Impact", Font.PLAIN, 24));
         player1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -158,23 +178,6 @@ public class MainChess {
         imagen.add(board);
 
         frame.setVisible(true);
-
-        // botonSonidos.addActionListener(new ActionListener() {
-        //     @Override
-        //     public void actionPerformed(ActionEvent e) {
-        //         reiniciarBoard(); // Llama al método para reiniciar el objeto Board
-        //     }
-
-        //     public void reiniciarBoard() {
-        //         imagen.removeAll();
-        //         reproducirSonidoClic();
-
-        //         frame.dispose();
-
-        //         MainIntro intro = new MainIntro();
-        //         intro.iniciar();
-        //     }
-        // });
 
 
         try {

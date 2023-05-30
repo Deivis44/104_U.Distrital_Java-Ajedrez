@@ -164,7 +164,7 @@ public class MainInterfaz {
                 e.printStackTrace();
             }
             setOpaque(false); // Hacer que el JTextArea sea transparente
-            setFont(new Font("Courier New", Font.PLAIN, 30)); // Establecer la fuente del texto
+            setFont(new Font("Impact", Font.PLAIN, 30)); // Establecer la fuente del texto
             
         }
 

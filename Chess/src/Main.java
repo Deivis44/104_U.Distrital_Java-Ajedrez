@@ -4,5 +4,6 @@ public class Main {
         
         Vista iniciarJuego = new Vista();
         iniciarJuego.abrirVentanas();
+
     }
 }
