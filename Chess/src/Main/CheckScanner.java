@@ -115,5 +115,5 @@ public class CheckScanner {
         return p != null && !board.sameTeam(p, k) && p.name.equals("Pawn") && !(p.col == col && p.row == row);
     }
 
-    // programar el maldito mate me hizo perder 40 años de vida 30/05/23 - 3:57AM
+    // programar el maldito mate nos hizo perder 40 años de vida 30/05/23 - 3:57AM
 }

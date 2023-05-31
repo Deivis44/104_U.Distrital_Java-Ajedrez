@@ -1,10 +1,10 @@
 package Intro;
 
-import javax.swing.*;
 
 import Main.MainChess;
 
 import java.awt.*;
+import javax.swing.*;
 import javax.sound.sampled.*;
 import java.io.IOException;
 import java.awt.event.*;
