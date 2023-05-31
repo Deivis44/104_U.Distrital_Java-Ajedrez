@@ -91,9 +91,9 @@ public class MainChess {
                 String jaqueMate;
         
                 if (Input.contador % 2 == 0) {
-                    jaqueMate = "\n                                         |\n        ¡Jaque mate de blancas!          |\n";
+                    jaqueMate = "                                         |\n        ¡Jaque mate de blancas!          |\n";
                 } else {
-                    jaqueMate = "\n                                         |\n        ¡Jaque mate de negras!           |\n";
+                    jaqueMate = "                                         |\n        ¡Jaque mate de negras!           |\n";
                 }
         
                 Input.logBuilder.append(jaqueMate).append(System.lineSeparator());
@@ -112,7 +112,7 @@ public class MainChess {
         botonInfo.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String videoURL = "https://www.youtube.com/watch?v=AH4Vx5zz7Go";
+                    String videoURL = "https://www.youtube.com/watch?v=xGlpHZeNWUM";
                     Desktop.getDesktop().browse(new URI(videoURL));
                 } catch (IOException | URISyntaxException ex) {
                     ex.printStackTrace();
